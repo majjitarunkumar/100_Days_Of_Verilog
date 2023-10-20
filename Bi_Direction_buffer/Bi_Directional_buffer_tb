@@ -1,0 +1,40 @@
+module bi_dir_tb();
+	reg ctrl;
+	reg ta,tb; //temp varibles
+	wire a,b;
+	integer i;
+	bi_dir DUT(ctrl,a,b);
+	initial
+		begin
+			for(i=0;i<8;i=i+1)
+				begin
+					{ta,tb,ctrl}=i;
+					#10;
+				end	
+				#20 $finish;
+		end
+	assign a= ctrl?ta:1'bZ;    //based on control signal,the data should go to the output
+	assign b= ~ctrl?tb:1'bz;
+	initial
+		$monitor("ctrl=%b,a=%b,b=%b",ctrl,a,b);
+endmodule
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
