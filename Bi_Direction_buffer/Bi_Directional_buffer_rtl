@@ -1,0 +1,4 @@
+module bi_dir(input ctrl, inout a,b);
+	bufif1 (b,a,ctrl);
+	bufif0 (a,b,ctrl);
+endmodule
